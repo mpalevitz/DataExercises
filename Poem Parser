@@ -1,0 +1,39 @@
+#Data
+highlighted_poems = "Afterimages:Audre Lorde:1997,  The Shadow:William Carlos Williams:1915, Ecstasy:Gabriela Mistral:1925,   Georgia Dusk:Jean Toomer:1923,   Parting Before Daybreak:An Qi:2014, The Untold Want:Walt Whitman:1871, Mr. Grumpledump's Song:Shel Silverstein:2004, Angel Sound Mexico City:Carmen Boullosa:2013, In Love:Kamala Suraiyya:1965, Dream Variations:Langston Hughes:1994, Dreamwood:Adrienne Rich:1987"
+
+#print(highlighted_poems)
+
+#Turning each full item into its own list item
+highlighted_poems_list = highlighted_poems.split(",")
+
+#Checking list
+#print(highlighted_poems_list)
+
+#Cleaning whitespace
+highlighted_poems_stripped = []
+for poem in highlighted_poems_list:
+  highlighted_poems_stripped.append(poem.strip())
+
+#Checking list
+#print(highlighted_poems_stripped)
+
+#Readying new list
+highlighted_poems_details = []
+
+#Breaking up each list item into nested lists
+for poem in highlighted_poems_stripped:
+  highlighted_poems_details.append(poem.split(":"))
+  
+#Readying new lists
+titles = []
+poets = []
+dates = []
+
+#Separating specifics 
+titles = [title[0] for title in highlighted_poems_details]
+poets = [poet[1] for poet in highlighted_poems_details]
+dates = [date[2] for date in highlighted_poems_details]
+
+#Printout of parsed data
+for i in range(len(titles)):
+  print("The poem {TITLE} was published by {POET} in {DATE}.".format(TITLE=titles[i], POET=poets[i], DATE=dates[i]))
